@@ -141,7 +141,7 @@ class AcademicPaperClassifier(Model):
     @classmethod
     def from_params(cls, vocab: Vocabulary, params: Params) -> 'AcademicPaperClassifier':
         embedder_params = params.pop("text_field_embedder")
-        text_field_embedder = TextFieldEmbedder.from_params(vocab, embedder_params)
+        text_field_embedder = TextFieldEmbedder.from_params(embedder_params, vocab=vocab)
         title_encoder = Seq2VecEncoder.from_params(params.pop("title_encoder"))
         abstract_encoder = Seq2VecEncoder.from_params(params.pop("abstract_encoder"))
         classifier_feedforward = FeedForward.from_params(params.pop("classifier_feedforward"))
